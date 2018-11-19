@@ -1,0 +1,66 @@
+//Bài 92. Tính tổng các giá trị có chữ số đầu tiên là chữ số lẻ trong mảng một chiều các số nguyên
+
+#include<stdio.h>
+#include<conio.h>
+void nhap(int a[], int &n);
+void xuat(int a[], int n);
+int chusodau(int k);
+int tongledautien(int a[], int n);
+
+int main()
+{
+	int a[100], n = 0;
+	nhap(a, n);
+	xuat(a, n);
+
+	printf("\nle dau = %d", tongledautien(a, n));
+
+
+	_getch();
+	return 0;
+}
+
+
+void nhap(int a[], int &n)
+{
+	printf("nhap so phan tu co trong mang: ");
+	scanf_s("%d", &n);
+	for (int i = 0; i < n; i++)
+	{
+		printf("a[%d] = ", i);
+		scanf_s("%d", &a[i]);
+	}
+}
+
+
+void xuat(int a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d", a[i]);
+	}
+}
+
+int chusodau(int k)
+{
+	while (k >= 10)
+	{
+		k = k / 10;
+	}
+	if (k % 2 == 0)
+		return 0;
+	return 1;
+}
+
+int tongledautien(int a[], int n)
+{
+	int le = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (chusodau(a[i]) == 1)
+			le += a[i];
+	}
+	return le;
+}
+
+
